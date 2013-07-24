@@ -1,0 +1,97 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style>
+	body {
+		width: 1024px;
+		height: 600px;
+		margin: 0px;
+		border: 1px #000 solid;
+	}
+
+	.weather {
+		position: absolute;
+		top: 70px;
+		height: 100px;
+		overflow: hidden;
+		border-bottom: 1px #aaa solid;
+	}
+
+	.time {
+		position: absolute;
+		top: -10px;
+		height: 120px;
+	}
+
+	.jams {
+		position: absolute;
+		top: 175px;
+		height: 92px;
+		overflow: hidden;
+	}
+
+	.curr {
+		font-size: 0.8em;
+		position: absolute;
+		top: 268px;
+	}
+
+	.left, .right { display: inline-block; }
+	.left { width: 130px; margin-left: 10px;}
+	.right { width: 880px; }
+
+
+
+	span.yandex_date {font-size: 85%; margin-right:0.5em}
+	div.yandex_informer {font-size: 85%; margin-bottom: 0.3em}
+	div.yandex_title {font-size: 100%; margin-bottom: 0.5em}
+	div.yandex_title a { } 
+	div.yandex_allnews {font-size: 80%; margin-top: 0.3em}
+	div.yandex_allnews {font-size: 80%; margin-top: 0.3em}
+	div.yandex_annotation {font-size: 81%; margin-bottom: 0.5em}
+</style>
+
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src='http://news.yandex.ru/common.js'></script>
+	<script> m_index=false; </script>
+	<script src='http://news.yandex.ru/ru/world5.utf8.js' type='text/javascript' charset='utf-8'></script>
+<script>
+	// $(function() {
+	// 	// setInterval(function() {$("span").load("/info_content")}, 10000)
+	// 	$("span").load("/info_content")}
+	// })
+
+	setTimeout(function (){
+		document.location.href="";
+	}, 300000);
+</script>
+
+<body>
+	<span class="information">
+		<div class="left">
+	<iframe class="time" frameborder="no" scrolling="no" style="width:120px; height:80px" src="http://time.yandex.ru/pages/widget/informer/index.html?geoid=213&theme=digital&layout=horiz"></iframe>
+	<div class="weather"><img src="http://info.weather.yandex.net/moscow/3_white.ru.png"></div>
+	<div class="jams"><img src="http://info.maps.yandex.net/traffic/moscow/current_traffic_120.gif"/></div>
+	<div class="curr">Доллар - 32,35 рубля</div>
+</div>
+
+<div class="right">
+	<script> 
+		str='';
+		if ((aObj=eval('m_world')) && (aObj.length>0)) {
+		for (j=0;j<aObj.length;j++) { 
+				str+='<div><span class=yandex_date>'+aObj[j].time+'</span><span class=yandex_news_title><a href='+aObj[j].url+'>'+aObj[j].title+'</a></span></div><div class=yandex_annotation>'+aObj[j].descr+'</div>';
+			} 
+			document.write(str);
+		}; 
+
+		function ya_format_date(timestamp){
+			var d = (new Date(timestamp*1000)).toLocaleTimeString().split(':'); 
+			return [d[0], d[1]].join(':').replace(/d{1,2}:d{1,2}(:d{1,2})/, '');
+		}
+	</script>
+</div>
+	</span>
+</body>
